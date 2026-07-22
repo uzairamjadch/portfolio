@@ -44,7 +44,7 @@ img, svg { max-width: 100%; display: block; }
 a { color: inherit; }
 ul { list-style: none; }
 
-a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible {
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 4px;
@@ -69,12 +69,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px 6%;
+  padding: 16px 5%;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(234, 228, 221, 0.6);
-  transition: all 0.3s ease;
 }
 
 .logo {
@@ -93,8 +92,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   align-items: center;
   gap: 30px;
 }
-
-.menu-close-item { display: none; }
 
 .nav-links a {
   text-decoration: none;
@@ -122,12 +119,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transform: translateY(-2px); 
 }
 
-.menu-toggle, .menu-close { 
+.menu-toggle { 
   display: none; 
   background: none; 
   border: none; 
   cursor: pointer; 
-  padding: 8px; 
+  padding: 8px;
+  margin-left: auto;
 }
 
 .menu-toggle .bar { 
@@ -139,9 +137,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   transition: all 0.3s ease; 
 }
 
-.menu-toggle[aria-expanded="true"] .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.menu-toggle[aria-expanded="true"] .bar:nth-child(2) { opacity: 0; }
-.menu-toggle[aria-expanded="true"] .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.menu-close {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
 
 .nav-backdrop {
   display: none;
@@ -158,7 +159,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .nav-backdrop.active { opacity: 1; pointer-events: auto; }
 
-/* ---------- Hero Section (Desktop Default) ---------- */
+/* ---------- Hero Section (Index/Home) ---------- */
 .hero-reference-layout {
   position: relative;
   min-height: 95vh;
@@ -174,6 +175,8 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   width: 100%;
   height: 100%;
   z-index: 1;
+  pointer-events: none !important;
+  user-select: none;
 }
 
 .hero-bg-video {
@@ -181,6 +184,31 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   height: 100%;
   object-fit: cover;
   object-position: center 20%;
+  pointer-events: none !important;
+}
+
+.sound-toggle-btn {
+  position: absolute;
+  top: 90px;
+  right: 5%;
+  z-index: 10;
+  background: rgba(20, 23, 28, 0.65);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+  pointer-events: auto !important;
+}
+
+.sound-toggle-btn:hover {
+  background: rgba(20, 23, 28, 0.85);
+  transform: scale(1.04);
 }
 
 .video-overlay-gradient {
@@ -287,21 +315,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   backdrop-filter: blur(4px);
 }
 
-.growth-divider { 
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  z-index: 3;
-  display: block; 
-  width: 100%; 
-  height: auto; 
-}
-
-/* ---------- Shared Sections ---------- */
+/* ---------- Shared Sections & About ---------- */
 .section { padding: 90px 6%; }
 .bg-soft { background: var(--bg-soft); }
 
-/* ---------- About Section ---------- */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -309,6 +326,13 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   max-width: 1100px;
   margin: 0 auto;
   align-items: center;
+}
+
+.about-copy h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  margin: 8px 0 16px 0;
+  letter-spacing: -0.5px;
 }
 
 .about-copy p { color: var(--ink-soft); margin-bottom: 16px; font-size: 1.02rem; }
@@ -331,24 +355,14 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .highlight-card .num { font-family: var(--font-display); font-weight: 800; color: var(--accent); font-size: 1.4rem; }
 .highlight-card .label { color: var(--ink-soft); font-size: 0.85rem; margin-top: 4px; font-weight: 500; }
 
-/* ---------- Footer ---------- */
-.footer {
-  text-align: center;
-  padding: 40px 20px;
-  color: var(--ink-faint);
-  font-size: 0.85rem;
-  border-top: 1px solid var(--border);
-  background: var(--bg);
-}
-
 /* ======================================================
-   SUBPAGE BASE STYLES (Projects, Skills, Contact)
+   SUBPAGES: PROJECTS, SKILLS, CONTACT
    ====================================================== */
 
 .subpage-hero {
-  padding-top: 130px;
+  padding-top: 140px;
   padding-bottom: 80px;
-  min-height: calc(100vh - 120px);
+  min-height: calc(100vh - 80px);
 }
 
 .section-head {
@@ -371,11 +385,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   font-size: 1.02rem;
 }
 
-/* Projects Grid */
+/* --- Projects Page --- */
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
   max-width: 1200px;
   margin: 0 auto;
 }
@@ -385,8 +399,10 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   border: 1px solid var(--border);
   border-radius: 20px;
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
   box-shadow: 0 10px 30px rgba(20, 23, 28, 0.04);
+  display: flex;
+  flex-direction: column;
 }
 
 .project-card:hover {
@@ -396,11 +412,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 }
 
 .project-thumb {
-  height: 160px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 3rem;
+  font-size: 3.5rem;
   background: var(--bg-soft);
   border-bottom: 1px solid var(--border);
 }
@@ -410,7 +426,12 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .thumb-3 { background: linear-gradient(135deg, #EBF3FF 0%, #F8F5F2 100%); }
 .thumb-4 { background: linear-gradient(135deg, #F3E9FF 0%, #F8F5F2 100%); }
 
-.project-body { padding: 24px; }
+.project-body { 
+  padding: 26px; 
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 
 .tag-label {
   display: inline-block;
@@ -425,7 +446,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .project-body h3 {
   font-family: var(--font-display);
-  font-size: 1.25rem;
+  font-size: 1.3rem;
   font-weight: 700;
   margin-bottom: 10px;
   color: var(--ink);
@@ -433,11 +454,34 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
 .project-body p {
   color: var(--ink-soft);
-  font-size: 0.92rem;
-  line-height: 1.55;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
 }
 
-/* Skills Grid */
+.project-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.project-link {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap 0.2s ease;
+}
+
+.project-link:hover { gap: 8px; }
+
+/* --- Skills Page --- */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -498,23 +542,24 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .tag {
   background: var(--bg-soft);
   border: 1px solid var(--border);
-  padding: 6px 12px;
+  padding: 6px 14px;
   border-radius: 100px;
   font-size: 0.78rem;
   font-weight: 600;
   color: var(--ink);
 }
 
-/* Contact Form */
-.contact-section {
+/* --- Contact Page --- */
+.contact-container {
   display: flex;
   justify-content: center;
   align-items: center;
+  max-width: 680px;
+  margin: 0 auto;
 }
 
 .contact-card {
   width: 100%;
-  max-width: 620px;
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 24px;
@@ -543,17 +588,21 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   gap: 20px;
 }
 
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
 .form-label {
-  display: block;
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: var(--ink);
-  margin-bottom: 6px;
 }
 
 .form-input {
   width: 100%;
-  padding: 13px 16px;
+  padding: 14px 16px;
   border-radius: 12px;
   border: 1px solid var(--border);
   background: var(--bg-soft);
@@ -569,6 +618,11 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   box-shadow: 0 0 0 4px var(--accent-soft);
 }
 
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
 .form-select {
   appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%235B6070' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
@@ -576,11 +630,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   background-position: right 16px center;
 }
 
-.hidden-honeypot { display: none !important; }
-
 .submit-btn {
   width: 100%;
-  padding: 14px;
+  padding: 15px;
   border-radius: 100px;
   border: none;
   background: var(--accent);
@@ -596,20 +648,26 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 .submit-btn:hover {
   background: var(--accent-deep);
   transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(232, 64, 44, 0.35);
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--ink-faint);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border);
+  background: var(--bg);
 }
 
 /* ======================================================
-   RESPONSIVE DESIGN (Desktop & Mobile Refinements)
+   MOBILE REFINEMENTS (< 768px)
    ====================================================== */
 
-@media (min-width: 900px) {
-  .about-grid { grid-template-columns: 0.9fr 1.1fr; }
-}
-
 @media (max-width: 768px) {
-  /* Navigation Menu Mobile */
+  /* Navigation */
   .menu-toggle { display: block; }
-  .menu-close-item { display: block; }
   
   .menu-close {
     display: block; 
@@ -618,9 +676,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     right: 5%;
     font-size: 1.8rem; 
     color: var(--ink);
-    background: none; 
-    border: none; 
-    cursor: pointer;
   }
 
   .nav-links {
@@ -644,17 +699,23 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   .nav-links.active { right: 0; }
   .nav-backdrop { display: block; }
 
-  /* Mobile Hero: Low-Opacity Gradient + Bottom Alignment */
+  /* Hero Section */
   .hero-reference-layout { 
     min-height: 100vh; 
     padding-top: 80px;
     display: flex;
-    align-items: flex-end; /* Pushes content down vertically */
+    align-items: flex-end;
     padding-bottom: 40px;
   }
 
+  .sound-toggle-btn {
+    top: 75px;
+    right: 5%;
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
   .video-overlay-gradient {
-    /* Low top opacity keeps face fully visible, subtle bottom rise supports text */
     background: linear-gradient(
       180deg, 
       rgba(255, 255, 255, 0.15) 0%,   
@@ -665,7 +726,7 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
 
   .hero-overlay-content {
     padding: 10px 5%;
-    margin-top: auto; /* Sit down vertically */
+    margin-top: auto;
   }
 
   .hero-overlay-content h1 {
@@ -690,11 +751,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     justify-content: center;
   }
 
-  .section { padding: 50px 5%; }
-
-  /* Subpages Mobile Headers */
+  /* Subpages Mobile Spacing */
   .subpage-hero {
-    padding-top: 100px;
+    padding-top: 110px;
     padding-bottom: 50px;
   }
 
@@ -714,44 +773,29 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
   /* Grid Layouts for Mobile */
   .projects-grid, .skills-grid {
     grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .about-highlights {
-    grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 20px;
   }
 
   .project-card, .skill-card {
     border-radius: 16px;
-    box-shadow: 0 4px 20px rgba(20, 23, 28, 0.05);
   }
 
-  .project-thumb { height: 130px; font-size: 2.5rem; }
-  .project-body { padding: 18px 20px; }
+  .project-thumb { height: 140px; font-size: 2.8rem; }
+  .project-body { padding: 20px; }
 
-  .skill-card { padding: 22px 20px; }
+  .skill-card { padding: 24px 20px; }
 
-  .skill-icon {
-    width: 44px;
-    height: 44px;
-    font-size: 1.3rem;
-    margin-bottom: 14px;
-    border-radius: 12px;
-  }
-
-  /* Mobile Form Controls */
+  /* Mobile Contact Form Adjustments */
   .contact-card {
     padding: 26px 20px;
     border-radius: 18px;
-    box-shadow: 0 6px 24px rgba(20, 23, 28, 0.06);
   }
 
   .contact-card h2 { font-size: 1.65rem; }
 
   .form-input {
     padding: 14px;
-    font-size: 16px; /* Prevents auto-zoom in Safari iOS */
+    font-size: 16px; /* Prevents auto-zoom on iOS Safari */
     border-radius: 10px;
   }
 
@@ -760,4 +804,6 @@ a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visib
     font-size: 1rem;
     border-radius: 12px;
   }
+
+  .section { padding: 50px 5%; }
 }
