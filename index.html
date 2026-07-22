@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uzair Amjad | Shopify, Web & Growth</title>
+<meta name="description" content="Uzair Amjad — Shopify development, paid acquisition strategy, and web engineering for growth-focused brands.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23E8402C'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<!-- Fixed Always-On-Top Header Navigation -->
+<header class="navbar">
+  <a href="index.html" class="logo">Uzair<span>.</span></a>
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav" onclick="toggleMenu()">
+    <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+  </button>
+  <nav aria-label="Primary">
+    <ul class="nav-links" id="primary-nav">
+      <li class="menu-close-item"><button class="menu-close" aria-label="Close navigation" onclick="toggleMenu()">×</button></li>
+      <li><a href="index.html" class="active-link">Home</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="skills.html">Skills</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section with Background Video & Text Overlay -->
+  <section class="hero-reference-layout" id="home">
+    
+    <!-- Full Background Video Layer -->
+    <div class="hero-video-wrapper">
+      <video id="intro-video" class="hero-bg-video" src="intro.mp4" poster="profile.jpg" playsinline preload="auto" autoplay muted></video>
+      <div class="video-overlay-gradient"></div>
+    </div>
+
+    <!-- Text Layer Overlaid on top of Video -->
+    <div class="hero-overlay-content" data-aos="fade-up" data-aos-duration="800">
+      <div class="eyebrow-badge"><span class="dot"></span> Available for freelance work</div>
+      <h1>Hi, I'm <span class="accent-text">Uzair Amjad</span></h1>
+      <div class="role-line"><span id="typewriter"></span><span class="cursor">|</span></div>
+      <p class="hero-desc">I build high-converting Shopify stores, run performance-driven Meta ad funnels, and engineer clean, responsive web applications for growth-focused brands.</p>
+      
+      <div class="hero-buttons">
+        <a href="projects.html" class="btn btn-primary">View My Work</a>
+        <a href="contact.html" class="btn btn-outline">Get In Touch</a>
+      </div>
+      
+      <div class="hero-chip-row">
+        <span class="mini-chip">🛍️ Shopify</span>
+        <span class="mini-chip">🎯 Meta Ads</span>
+        <span class="mini-chip">🎨 Canva</span>
+        <span class="mini-chip">💻 Web Dev</span>
+      </div>
+    </div>
+
+    <!-- Bottom Decorative Divider -->
+    <svg class="growth-divider" viewBox="0 0 1440 90" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M0,70 C 220,20 380,85 620,45 C 860,5 1040,60 1440,15 L1440,90 L0,90 Z" fill="#F8F5F2"></path>
+      <path d="M0,70 C 220,20 380,85 620,45 C 860,5 1040,60 1440,15" fill="none" stroke="#E8402C" stroke-width="2.5" opacity="0.35"></path>
+      <circle cx="1440" cy="15" r="5" fill="#E8402C"></circle>
+    </svg>
+  </section>
+
+  <!-- About Section -->
+  <section class="section bg-soft" id="about">
+    <div class="about-grid">
+      <div class="about-copy" data-aos="fade-right" data-aos-duration="800">
+        <span class="eyebrow"> About Me</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.1rem); font-weight: 800; margin: 12px 0 18px 0; letter-spacing: -0.5px;">Engineering stores and funnels that actually convert.</h2>
+        <p>I work at the intersection of development and growth — building the Shopify storefronts and web applications a brand runs on, then driving qualified traffic to them with structured Meta ad campaigns.</p>
+        <p>My process stays deliberately clean: modular architecture, clear tracking, and design decisions grounded in what moves conversion, not just what looks good.</p>
+      </div>
+      <div class="about-highlights" data-aos="fade-left" data-aos-duration="800">
+        <div class="highlight-card">
+          <div class="num">Shopify</div>
+          <div class="label">Private label storefront architecture &amp; theme development</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">Meta Ads</div>
+          <div class="label">Audience targeting, creative scaling &amp; pixel tracking</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">Web Dev</div>
+          <div class="label">Responsive multi-page systems &amp; async data handling</div>
+        </div>
+        <div class="highlight-card">
+          <div class="num">Canva</div>
+          <div class="label">Brand identity kits &amp; high-click ad creative</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Uzair Amjad. All rights reserved.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

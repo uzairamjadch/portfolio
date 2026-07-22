@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact | Uzair Amjad</title>
+<meta name="description" content="Get in touch with Uzair Amjad about Shopify development, paid acquisition, or web projects.">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23E8402C'/%3E%3Ctext x='16' y='22' font-family='sans-serif' font-size='16' font-weight='800' fill='white' text-anchor='middle'%3EU%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css">
+<link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+<div class="nav-wrapper">
+  <header class="navbar">
+    <a href="index.html" class="logo">Uzair<span>.</span></a>
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-nav" onclick="toggleMenu()">
+      <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+    </button>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="primary-nav">
+        <li class="menu-close-item"><button class="menu-close" aria-label="Close navigation" onclick="toggleMenu()">×</button></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+      </ul>
+    </nav>
+  </header>
+</div>
+
+<main>
+  <section class="section contact-section subpage-hero" id="contact">
+    <div class="contact-card" data-aos="zoom-in" data-aos-duration="800">
+      <h2>Let's build something</h2>
+      <p>Tell me about the project and I'll respond within 1–2 business days.</p>
+      <form action="https://api.web3forms.com/submit" method="POST" class="contact-form">
+        <input type="hidden" name="access_key" value="4c9673a5-c35d-4ae3-a2ae-5164686738a5">
+        <input type="checkbox" name="botcheck" class="hidden-honeypot" tabindex="-1" autocomplete="off">
+        <div>
+          <label class="form-label" for="cf-name">Name / Enterprise</label>
+          <input type="text" id="cf-name" name="name" placeholder="Name / Enterprise" required class="form-input" autocomplete="name">
+        </div>
+        <div>
+          <label class="form-label" for="cf-email">Email Address</label>
+          <input type="email" id="cf-email" name="email" placeholder="Email Address" required class="form-input" autocomplete="email">
+        </div>
+        <div>
+          <label class="form-label" for="cf-project">Project objective</label>
+          <select id="cf-project" name="project_type" required class="form-input form-select">
+            <option value="" disabled selected hidden>Select Objective</option>
+            <option value="Shopify Custom Architecture">Shopify Custom Architecture</option>
+            <option value="Full-Stack Application Development">Full-Stack Application Development</option>
+            <option value="Paid Acquisition Strategy">Paid Marketing Strategy</option>
+            <option value="High-Retention Media Assets">Graphic Designing</option>
+          </select>
+        </div>
+        <div>
+          <label class="form-label" for="cf-message">Project details</label>
+          <textarea id="cf-message" name="message" rows="5" placeholder="Detail your project specifications and requirements..." required class="form-input"></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Send Message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>© 2026 Uzair Amjad. All rights reserved.</p>
+</footer>
+
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
