@@ -4,7 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Uzair Amjad | Portfolio</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="index.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <!-- Sora & Inter Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,18 +21,20 @@
   <header class="navbar">
     <a href="index.html" class="logo">Uzair<span>.</span></a>
 
-    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" onclick="toggleMenu()">
       <span class="bar"></span>
       <span class="bar"></span>
       <span class="bar"></span>
     </button>
 
-    <nav class="nav-links" id="navLinks">
-      <button class="menu-close" id="menuClose" aria-label="Close navigation">&times;</button>
-      <a href="index.html" class="active-link">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="skills.html">Skills</a>
-      <a href="contact.html" class="nav-cta">Let's Talk</a>
+    <nav aria-label="Primary">
+      <ul class="nav-links" id="navLinks">
+        <li class="menu-close-item"><button class="menu-close" id="menuClose" aria-label="Close navigation" onclick="toggleMenu()">&times;</button></li>
+        <li><a href="index.html" class="active-link">Home</a></li>
+        <li><a href="skills.html">Skills</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+      </ul>
     </nav>
   </header>
 
@@ -38,7 +42,7 @@
   <section class="hero-reference-layout">
     <div class="hero-video-wrapper">
       <video 
-        id="heroVideo"
+        id="intro-video"
         class="hero-bg-video" 
         autoplay 
         loop 
@@ -59,28 +63,29 @@
     </div>
 
     <div class="hero-overlay-content">
-      <div class="eyebrow-badge">
+      <div class="eyebrow-badge" data-aos="fade-down" data-aos-duration="600">
         <span class="dot"></span>
         Available for freelance work
       </div>
       
-      <h1>Hi, I'm <span class="accent-text">Uzair Amjad</span></h1>
+      <h1 data-aos="fade-up" data-aos-duration="700">Hi, I'm <span class="accent-text">Uzair Amjad</span></h1>
       
-      <div class="role-line">
-        <span id="typedRole">Web Applications & E-Commerce</span>
+      <!-- Animated Dynamic Role Line -->
+      <div class="role-line" data-aos="fade-up" data-aos-delay="100">
+        <span id="typewriter">Web Applications & E-Commerce</span>
         <span class="cursor">|</span>
       </div>
 
-      <p class="hero-desc">
+      <p class="hero-desc" data-aos="fade-up" data-aos-delay="200">
         I build high-converting Shopify stores, run performance-driven Meta ad funnels, and engineer clean, responsive web applications for growth-focused brands.
       </p>
 
-      <div class="hero-buttons">
+      <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
         <a href="projects.html" class="btn btn-primary">View My Work</a>
         <a href="contact.html" class="btn btn-outline">Get In Touch</a>
       </div>
 
-      <div class="hero-chip-row">
+      <div class="hero-chip-row" data-aos="fade-up" data-aos-delay="400">
         <span class="mini-chip">🛍️ Shopify</span>
         <span class="mini-chip">🎯 Meta Ads</span>
         <span class="mini-chip">🎨 Canva</span>
@@ -88,26 +93,93 @@
     </div>
   </section>
 
-  <!-- About / Highlights Section -->
+  <!-- Expanded Scrollable About Me Section -->
   <section class="section bg-soft">
-    <div class="about-grid">
+    <div class="about-grid" data-aos="fade-up">
+      
+      <!-- Bio Header -->
       <div class="about-copy">
         <span class="eyebrow">ABOUT ME</span>
-        <h2>Building digital experiences that convert</h2>
+        <h2>Engineering digital experiences that convert</h2>
         <p>
-          I specialise in creating modern, mobile-first web applications and scalable e-commerce solutions. My focus is on delivering smooth user experiences, optimized performance, and high-converting marketing strategies.
+          I am a web developer and growth strategist dedicated to building high-performing digital systems. Whether crafting custom e-commerce storefronts or engineering web applications, my focus is always on speed, seamless mobile UX, and high conversion efficiency.
         </p>
-        <div class="about-highlights">
-          <div class="highlight-card">
-            <div class="num">100%</div>
-            <div class="label">Responsive Design</div>
-          </div>
-          <div class="highlight-card">
-            <div class="num">Fast</div>
-            <div class="label">Performance Optimized</div>
-          </div>
+      </div>
+
+      <!-- Quick Metrics Bar -->
+      <div class="about-highlights">
+        <div class="highlight-card" data-aos="zoom-in" data-aos-delay="100">
+          <div class="num">100%</div>
+          <div class="label">Mobile-First Responsive Design</div>
+        </div>
+        <div class="highlight-card" data-aos="zoom-in" data-aos-delay="200">
+          <div class="num">High-CRO</div>
+          <div class="label">Optimized User Experience</div>
+        </div>
+        <div class="highlight-card" data-aos="zoom-in" data-aos-delay="300">
+          <div class="num">Scalable</div>
+          <div class="label">Clean & Modular Architecture</div>
+        </div>
+        <div class="highlight-card" data-aos="zoom-in" data-aos-delay="400">
+          <div class="num">Growth</div>
+          <div class="label">Data-Driven Acquisition Strategy</div>
         </div>
       </div>
+
+      <!-- Core Pillars -->
+      <div style="margin-top: 50px;">
+        <span class="eyebrow" style="display: block; margin-bottom: 12px;">MY CORE PILLARS</span>
+        <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px;">
+          
+          <div class="skill-card" data-aos="fade-up" data-aos-delay="100">
+            <div class="skill-icon red">⚡</div>
+            <h3>User-Centric Execution</h3>
+            <p>Prioritizing swift page load speeds, clean typography, and intuitive touch targets across every screen resolution.</p>
+          </div>
+
+          <div class="skill-card" data-aos="fade-up" data-aos-delay="200">
+            <div class="skill-icon ink">📈</div>
+            <h3>Conversion Focus</h3>
+            <p>Structuring interfaces and media funnels to guide visitors seamlessly from landing page to finalized checkout.</p>
+          </div>
+
+          <div class="skill-card" data-aos="fade-up" data-aos-delay="300">
+            <div class="skill-icon gold">🛠️</div>
+            <h3>Clean Code Standards</h3>
+            <p>Writing organized, reusable code structures for smooth deployment, maintenance, and future development scale.</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- My Workflow / Process -->
+      <div style="margin-top: 50px;">
+        <span class="eyebrow" style="display: block; margin-bottom: 12px;">HOW I WORK</span>
+        <div class="skills-grid" style="grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px;">
+          
+          <div class="skill-card" style="padding: 24px;" data-aos="fade-up" data-aos-delay="100">
+            <span style="font-family: var(--font-display); font-weight: 800; color: var(--accent); font-size: 1.2rem;">01. Strategy</span>
+            <p style="margin-top: 8px; font-size: 0.88rem; margin-bottom: 0;">Analyzing project goals, user journeys, and target market audience profile.</p>
+          </div>
+
+          <div class="skill-card" style="padding: 24px;" data-aos="fade-up" data-aos-delay="200">
+            <span style="font-family: var(--font-display); font-weight: 800; color: var(--accent); font-size: 1.2rem;">02. Design & Code</span>
+            <p style="margin-top: 8px; font-size: 0.88rem; margin-bottom: 0;">Building interactive wireframes and developing mobile-first UI components.</p>
+          </div>
+
+          <div class="skill-card" style="padding: 24px;" data-aos="fade-up" data-aos-delay="300">
+            <span style="font-family: var(--font-display); font-weight: 800; color: var(--accent); font-size: 1.2rem;">03. Optimization</span>
+            <p style="margin-top: 8px; font-size: 0.88rem; margin-bottom: 0;">Testing responsive behaviors, performance speeds, and cross-browser stability.</p>
+          </div>
+
+          <div class="skill-card" style="padding: 24px;" data-aos="fade-up" data-aos-delay="400">
+            <span style="font-family: var(--font-display); font-weight: 800; color: var(--accent); font-size: 1.2rem;">04. Deployment</span>
+            <p style="margin-top: 8px; font-size: 0.88rem; margin-bottom: 0;">Publishing live production assets with git version control and launch QA.</p>
+          </div>
+
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -117,42 +189,24 @@
   </footer>
 
   <!-- Scripts -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script src="script.js"></script>
   <script>
-    // Navigation Toggle Logic
-    const menuToggle = document.getElementById('menuToggle');
-    const menuClose = document.getElementById('menuClose');
-    const navLinks = document.getElementById('navLinks');
-    const navBackdrop = document.getElementById('navBackdrop');
-
-    function openMenu() {
-      navLinks.classList.add('active');
-      navBackdrop.classList.add('active');
-      menuToggle.setAttribute('aria-expanded', 'true');
-    }
-
-    function closeMenu() {
-      navLinks.classList.remove('active');
-      navBackdrop.classList.remove('active');
-      menuToggle.setAttribute('aria-expanded', 'false');
-    }
-
-    menuToggle.addEventListener('click', openMenu);
-    menuClose.addEventListener('click', closeMenu);
-    navBackdrop.addEventListener('click', closeMenu);
-
     // Audio Unmute Toggle Logic
-    const heroVideo = document.getElementById('heroVideo');
+    const introVideo = document.getElementById('intro-video');
     const soundToggle = document.getElementById('soundToggle');
 
-    soundToggle.addEventListener('click', () => {
-      if (heroVideo.muted) {
-        heroVideo.muted = false;
-        soundToggle.innerHTML = "🔊 Sound On";
-      } else {
-        heroVideo.muted = true;
-        soundToggle.innerHTML = "🔇 Sound Off";
-      }
-    });
+    if (soundToggle && introVideo) {
+      soundToggle.addEventListener('click', () => {
+        if (introVideo.muted) {
+          introVideo.muted = false;
+          soundToggle.innerHTML = "🔊 Sound On";
+        } else {
+          introVideo.muted = true;
+          soundToggle.innerHTML = "🔇 Sound Off";
+        }
+      });
+    }
   </script>
 </body>
 </html>
