@@ -239,36 +239,12 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* ---------- Video Background Setup ---------- */
+    /* ---------- Video Background Setup (Clean & Safe) ---------- */
     const introVideo = document.getElementById('intro-video');
-
     if (introVideo) {
-        introVideo.loop = false; // Plays once
-
-        // Attempt playback with sound on open
-        introVideo.muted = false;
-        const playPromise = introVideo.play();
-
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // If browser blocks unmuted playback, play visually muted immediately
-                introVideo.muted = true;
-                introVideo.play().catch(() => {});
-
-                // Enable audio seamlessly on the user's first tap/click anywhere
-                const enableAudio = () => {
-                    introVideo.muted = false;
-                    introVideo.play().catch(() => {});
-                    window.removeEventListener('pointerdown', enableAudio);
-                    window.removeEventListener('touchstart', enableAudio);
-                    window.removeEventListener('keydown', enableAudio);
-                };
-
-                window.addEventListener('pointerdown', enableAudio, { once: true });
-                window.addEventListener('touchstart', enableAudio, { once: true });
-                window.addEventListener('keydown', enableAudio, { once: true });
-            });
-        }
+        // Play muted by default to comply with browser autoplay policies without freezing
+        introVideo.muted = true;
+        introVideo.play().catch(err => console.log("Autoplay prevented:", err));
     }
 
     /* ---------- Mobile Navigation ---------- */

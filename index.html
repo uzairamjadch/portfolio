@@ -192,14 +192,20 @@
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
   <script src="script.js"></script>
   <script>
-    // Audio Unmute Toggle Logic
+    // Smooth Non-Freezing Audio Unmute / Mute Toggle
     const introVideo = document.getElementById('intro-video');
     const soundToggle = document.getElementById('soundToggle');
 
     if (soundToggle && introVideo) {
-      soundToggle.addEventListener('click', () => {
+      soundToggle.addEventListener('click', async () => {
         if (introVideo.muted) {
           introVideo.muted = false;
+          // Ensure playback resumes cleanly after unmuting
+          try {
+            await introVideo.play();
+          } catch (error) {
+            console.log("Playback interrupted:", error);
+          }
           soundToggle.innerHTML = "🔊 Sound On";
         } else {
           introVideo.muted = true;
